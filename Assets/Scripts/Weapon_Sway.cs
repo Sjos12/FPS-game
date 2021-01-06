@@ -5,9 +5,9 @@ using UnityEngine;
 public class Weapon_Sway : MonoBehaviour
 {
 
-    float amount = 0.02f;
-    float maxamount = 0.03f;
-    float smooth = 3;
+    public float amount;
+    public float maxamount;
+    public float smooth;
     private Quaternion def;
     private bool Paused = false;
 
