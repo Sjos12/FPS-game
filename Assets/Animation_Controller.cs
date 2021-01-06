@@ -17,8 +17,14 @@ public class Animation_Controller : MonoBehaviour
     {
       if (Input.GetButtonDown("Fire1"))
         {
-            m_Animator.SetTrigger("shoot");
+            m_Animator.SetTrigger("Fire");
             Debug.Log("Fire Animation");
+        }
+
+        if (Input.GetKeyDown("r"))
+        {
+            m_Animator.SetTrigger("Reload");
+            Debug.Log("Reload Animation");
         }
     }
 }
