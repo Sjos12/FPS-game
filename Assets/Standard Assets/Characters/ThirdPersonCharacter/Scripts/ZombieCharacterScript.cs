@@ -4,8 +4,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 {
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
-	[RequireComponent(typeof(Animator))]
-	public class ThirdPersonCharacter : MonoBehaviour
+	public class ZombieCharacterScript : MonoBehaviour
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
@@ -29,9 +28,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+		//accesses animator component of Armature object. 
+		public GameObject animator_object; 
+
 		void Start()
 		{
-			m_Animator = GetComponent<Animator>();
+			m_Animator = animator_object.GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
 			m_CapsuleHeight = m_Capsule.height;
