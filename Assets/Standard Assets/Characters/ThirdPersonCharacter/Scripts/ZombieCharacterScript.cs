@@ -29,7 +29,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		bool m_Crouching;
 
 		//accesses animator component of Armature object. 
-		public GameObject animator_object; 
+		public GameObject animator_object;
+
+		
 
 		void Start()
 		{
@@ -222,5 +224,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = false;
 			}
 		}
+
 	}
 }
