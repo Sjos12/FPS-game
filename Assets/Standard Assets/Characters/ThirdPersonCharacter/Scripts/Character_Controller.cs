@@ -27,7 +27,16 @@ public class Character_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (Input.GetButtonDown("Fire1"))
+      if (Input.GetButtonDown("Fire2"))
+        {
+            m_Animator.SetBool("isAiming", true);
+        }
+      if (Input.GetButtonUp("Fire2"))
+        {
+            m_Animator.SetBool("isAiming", false);
+        }
+
+        if (Input.GetButtonDown("Fire1"))
         {
             //raycast shooting logic function
             Shoot();

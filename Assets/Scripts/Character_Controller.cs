@@ -15,7 +15,8 @@ public class Character_Controller : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
 
-    public Camera fpsCam; 
+    public Camera fpsCam;
+
 
     // Start is called before the first frame update
     void Start()
