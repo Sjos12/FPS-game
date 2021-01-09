@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character_Controller : MonoBehaviour
 {
     Animator m_Animator;
+    Animator target_animator;
     AudioSource m_shootingSound;
 
     //variables for magazine logic
@@ -78,14 +79,25 @@ public class Character_Controller : MonoBehaviour
     void Shoot ()
     {
         RaycastHit hit; 
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        
+        if (magazineEmpty == false)
         {
-            Target target = hit.transform.GetComponent<Target>();
-
-            if (target != null)
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
-                target.TakeDamage(damage);
+                Target target = hit.transform.GetComponent<Target>();
+
+                if (target != null)
+                {
+                    target.TakeDamage(damage);
+
+                    GameObject armature = target.transform.GetChild(0).gameObject;
+
+                    target_animator = armature.GetComponent<Animator>();
+
+                    target_animator.SetTrigger("Hit");
+                }
             }
         }
+        
     }
 }
