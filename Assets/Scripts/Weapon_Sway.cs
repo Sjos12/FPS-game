@@ -7,7 +7,8 @@ public class Weapon_Sway : MonoBehaviour
 
     public float amount;
     public float smooth;
-
+    
+    //use this to pause weapon sway during aiming down sights.
     public bool paused = false; 
 
     private Vector3 def;
