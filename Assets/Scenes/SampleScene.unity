@@ -1025,6 +1025,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 51.491, y: 52.765, z: 58.15}
+--- !u!1 &715744034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 113348, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
+  m_PrefabInstance: {fileID: 51967898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &715744042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715744034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85880eb25b5940340a8ae1c587dbd929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
 --- !u!1001 &847417212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3161,8 +3179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 2
-  maxamount: 4
   smooth: 3
+  paused: 0
 --- !u!1001 &1755074381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4995,7 +5013,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1154076213202018480}
-  - component: {fileID: 1920420235981277121}
   m_Layer: 0
   m_Name: UpperArm.R
   m_TagString: Untagged
@@ -5003,21 +5020,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1920420235981277121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920420235981277120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac52b368ebe9f34d8eef1ae9a69f4c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 4.51
-  maxamount: 4
-  smooth: 3
 --- !u!4 &1949709480286957768
 Transform:
   m_ObjectHideFlags: 0
@@ -6460,6 +6462,7 @@ GameObject:
   - component: {fileID: 5268552689009357606}
   - component: {fileID: 5268552689009357603}
   - component: {fileID: 5268552689009357604}
+  - component: {fileID: 5268552689009357605}
   m_Layer: 0
   m_Name: AIZombie
   m_TagString: Untagged
@@ -6501,6 +6504,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1218010487}
+--- !u!114 &5268552689009357605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268552689009357602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85880eb25b5940340a8ae1c587dbd929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
 --- !u!136 &5268552689009357606
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6652,6 +6668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8984533091928328950}
+  - component: {fileID: 5371221041254348593}
   m_Layer: 0
   m_Name: LowerArm.R
   m_TagString: Untagged
@@ -6659,6 +6676,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5371221041254348593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371221041254348592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac52b368ebe9f34d8eef1ae9a69f4c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.01
+  smooth: 2
+  paused: 0
 --- !u!1 &5392647411699947354
 GameObject:
   m_ObjectHideFlags: 0
