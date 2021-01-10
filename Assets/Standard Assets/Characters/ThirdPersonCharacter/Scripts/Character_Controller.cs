@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ using UnityEngine;
         //variables for raycast
         public float damage = 10f;
         public float range = 100f;
+
+        //variables for healthsystem 
+        public int playerHealth = 100; 
 
         public Camera fpsCam;
 
@@ -105,6 +109,8 @@ using UnityEngine;
             }
 
         }
+
+        
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine;
     public class Target : MonoBehaviour
     {
         public Rigidbody rb;
-
+        
 
         //health of zombie 
         public float health = 50f;
@@ -45,12 +45,13 @@ using UnityEngine;
 
             target_animator.SetBool("isDead", true);
 
+            
             //ZombieCharactercript script = gameObject.GetComponent<ZombieCharacterScript>();
 
-            rb = GetComponent<Rigidbody>();
+            //rb = GetComponent<Rigidbody>();
             //destroys gameobject
             Destroy(gameObject, despawnDelay);
-            rb.velocity = Vector3.zero;
+            //rb.velocity = Vector3.zero;
         }
 
     }

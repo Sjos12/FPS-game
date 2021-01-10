@@ -1218,9 +1218,9 @@ MonoBehaviour:
   m_JumpPower: 12
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1.5
-  m_AnimSpeedMultiplier: 1.5
+  m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.1
+  m_MoveSpeedMultiplier: 1
   animator_object: {fileID: 3182280141066584079}
 --- !u!114 &4705546109271998567
 MonoBehaviour:
@@ -1235,6 +1235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  distance: 0
+  minimumAttackRange: 2
 --- !u!114 &4705546109271998566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,7 +1249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85880eb25b5940340a8ae1c587dbd929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  rb: {fileID: 0}
+  health: 100
+  despawnDelay: 2
 --- !u!1 &4793613133098509337
 GameObject:
   m_ObjectHideFlags: 0

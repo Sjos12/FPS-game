@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
+        public int playerHealth = 100;
         // Use this for initialization
         private void Start()
         {
@@ -255,6 +255,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        public void playerTakeDamage(int damage)
+        {
+            playerHealth -= damage;
+
+            if (playerHealth <= 0)
+            {
+                Debug.Log("You died!");
+            }
         }
     }
 }
