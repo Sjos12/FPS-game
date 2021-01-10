@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -11,10 +12,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public ZombieCharacterScript character { get; private set; } // the character we are controlling
         public Transform target;                                    // target to aim for
         public float distance;
+        //minimum attack range of zombie
         public float minimumAttackRange = 2f;
+
+        //The player object
         public GameObject player;
+        
+        //zombie attack strength
         public int attackDamage = 10;
 
+        //variables for delay 
         public float lastAttackTime = 0;
         public float attackCooldown = 1;
 
@@ -51,7 +58,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             //finds animator on the armature of the zombie
             GameObject armature = gameObject.transform.GetChild(0).gameObject;
-            Debug.Log("Attack");
             Animator target_animator = armature.GetComponent<Animator>();
             
             //sets trigger 'attack'
@@ -59,14 +65,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             player = GameObject.Find("FPSController_Low_Poly");
 
-            UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerScript = player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
+            FirstPersonController playerScript = player.GetComponent<FirstPersonController>();
 
+            //if statements sets delay so the zombie doesn't attack 60 times a second
             if (Time.time - lastAttackTime >= attackCooldown)
             {
                 lastAttackTime = Time.time;
                 playerScript.playerTakeDamage(attackDamage);
-            }
-           
+            }         
         }
 
         public void SetTarget(Transform target)

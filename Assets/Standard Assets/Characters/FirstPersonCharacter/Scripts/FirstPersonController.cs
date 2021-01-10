@@ -42,6 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        //variable regulates health of player. 
         public int playerHealth = 100;
         // Use this for initialization
         private void Start()
@@ -259,11 +260,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void playerTakeDamage(int damage)
         {
-
+            //player takes damage
             playerHealth -= damage;
 
             if (playerHealth <= 0)
             {
+                //do code here for dying of character
                 Debug.Log("You died!");
                 
             }
