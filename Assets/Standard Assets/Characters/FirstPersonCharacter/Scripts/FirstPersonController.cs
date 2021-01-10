@@ -259,11 +259,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void playerTakeDamage(int damage)
         {
+
             playerHealth -= damage;
 
             if (playerHealth <= 0)
             {
                 Debug.Log("You died!");
+                
             }
         }
     }

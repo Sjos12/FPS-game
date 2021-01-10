@@ -1046,7 +1046,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85880eb25b5940340a8ae1c587dbd929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   health: 50
+  despawnDelay: 1
 --- !u!1001 &847417212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4781,7 +4783,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87475668a6967a4992e5c9f6273f50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1218010487}
+  distance: 0
+  minimumAttackRange: 1.5
+  player: {fileID: 0}
+  attackDamage: 10
 --- !u!114 &1305821921889683353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4794,7 +4800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85880eb25b5940340a8ae1c587dbd929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   health: 50
+  despawnDelay: 1
 --- !u!136 &1305821921889683354
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4864,9 +4872,9 @@ MonoBehaviour:
   m_JumpPower: 12
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1.5
   m_AnimSpeedMultiplier: 1.5
   m_GroundCheckDistance: 0.1
+  m_MoveSpeedMultiplier: 1
   animator_object: {fileID: 9186210409047902192}
 --- !u!4 &1362839497817905463
 Transform:
@@ -6563,9 +6571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7861ba287d42f2d42a1031268735924a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magazine: 7
+  magazine: 50
   magazineEmpty: 0
-  damage: 10
+  damage: 25
   range: 100
   fpsCam: {fileID: 208884246}
 --- !u!95 &6002991462346544286

@@ -15,6 +15,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public GameObject player;
         public int attackDamage = 10;
 
+        public float lastAttackTime = 0;
+        public float attackCooldown = 1;
+
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
@@ -58,9 +61,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerScript = player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
 
-            playerScript.playerTakeDamage(attackDamage);
-
-
+            if (Time.time - lastAttackTime >= attackCooldown)
+            {
+                lastAttackTime = Time.time;
+                playerScript.playerTakeDamage(attackDamage);
+            }
+           
         }
 
         public void SetTarget(Transform target)

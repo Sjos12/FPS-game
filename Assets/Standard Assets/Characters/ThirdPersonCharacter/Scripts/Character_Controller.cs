@@ -19,7 +19,7 @@ using UnityEngine;
         public float range = 100f;
 
         //variables for healthsystem 
-        public int playerHealth = 100; 
+        
 
         public Camera fpsCam;
 
