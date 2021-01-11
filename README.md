@@ -11,4 +11,6 @@ Animations of character: https://www.mixamo.com/#/
 
 Game IDEA: Player spawns on mansion property, has time to place defences around the house, then zombies come. Survive as long as possible. 
 
+Objects have healthbars and can take damage from zombies.
+
 Add camerashake
