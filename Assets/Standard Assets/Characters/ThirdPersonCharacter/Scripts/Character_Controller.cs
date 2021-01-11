@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
-    public class Character_Controller : MonoBehaviour
+using UnityEngine.UI;
+using TMPro;
+public class Character_Controller : MonoBehaviour
     {
         Animator m_Animator;
         Animator target_animator;
@@ -12,6 +12,7 @@ using UnityEngine;
 
         //variables for magazine logic
         public int magazine = 7;
+        public TextMeshProUGUI ammoDisplay;
         public bool magazineEmpty = false;
 
         //variables for raycast
@@ -42,6 +43,7 @@ using UnityEngine;
                 m_Animator.SetBool("isAiming", false);
             }
 
+            ammoDisplay.text = magazine.ToString();
             if (Input.GetButtonDown("Fire1"))
             {
                 //raycast shooting logic function

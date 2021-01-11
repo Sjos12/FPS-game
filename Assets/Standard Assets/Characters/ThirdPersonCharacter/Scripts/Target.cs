@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
     public class Target : MonoBehaviour
     {
-        public Rigidbody rb;
-        
-
+        public Gradient gradient;
+        public Slider slider;
+        public Image fill;
         //health of zombie 
         public float health = 50f;
 
@@ -30,6 +30,8 @@ using UnityEngine;
         public void TakeDamage(float amount)
         {
             health -= amount;
+            slider.value = health;  
+            fill.color = gradient.Evaluate(slider.normalizedValue);
             if (health <= 0f)
             {
                 Die();
