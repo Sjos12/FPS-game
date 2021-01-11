@@ -9,6 +9,6 @@ Pistol using: https://assetstore.unity.com/packages/3d/props/guns/modern-guns-ha
 
 Animations of character: https://www.mixamo.com/#/
 
-Game IDEA: Player spawns in house, has time to place defences around the house, then zombies come. Survive as long as possible. 
+Game IDEA: Player spawns on mansion property, has time to place defences around the house, then zombies come. Survive as long as possible. 
 
 Add camerashake
