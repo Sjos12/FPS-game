@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityEngine.UI;
- 
+using General;
 using Random = UnityEngine.Random;
 
 #pragma warning disable 618, 649

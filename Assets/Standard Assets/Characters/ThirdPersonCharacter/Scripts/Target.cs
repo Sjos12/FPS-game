@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using General;
     public class Target : MonoBehaviour
     {
-        public Gradient gradient;
-        public Slider slider;
-        public Image fill;
         //health of zombie 
-        public float health = 50f;
-
+        public int health = 100;
+        
         //time it takes for zombie to despawn after death.
         public float despawnDelay = 1f;
 
@@ -27,11 +24,11 @@ using UnityEngine.UI;
         }
 
         //regulates health and damage taken
-        public void TakeDamage(float amount)
+        public void TakeDamage(int amount)
         {
             health -= amount;
-            slider.value = health;  
-            fill.color = gradient.Evaluate(slider.normalizedValue);
+
+            GetComponent<Healthbar>().SetHealth(health);
             if (health <= 0f)
             {
                 Die();
