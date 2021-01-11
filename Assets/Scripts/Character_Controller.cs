@@ -17,6 +17,7 @@ public class Character_Controller : MonoBehaviour
 
     public Camera fpsCam;
 
+    
 
     // Start is called before the first frame update
     void Start()
