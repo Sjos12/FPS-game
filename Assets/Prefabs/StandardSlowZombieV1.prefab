@@ -1695,7 +1695,7 @@ Animator:
   m_GameObject: {fileID: 3111242225326986018}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4eef2e4af0033764abe4079350dce988, type: 2}
+  m_Controller: {fileID: 9100000, guid: edac106fc5907a94782392d56f8112ae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1751,7 +1751,7 @@ GameObject:
   - component: {fileID: 3111242225347636066}
   - component: {fileID: 3111242225347636091}
   m_Layer: 0
-  m_Name: StandardZombieV1
+  m_Name: StandardSlowZombieV1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,7 +1784,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 1
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
