@@ -34,7 +34,8 @@ public class Character_Controller : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-            if ((Input.GetKey("w")) || (Input.GetKey("s")))
+          
+        if ((Input.GetKey("w")) || (Input.GetKey("s")))
             {
                 m_Animator.SetBool("isWalking", true);
             }
