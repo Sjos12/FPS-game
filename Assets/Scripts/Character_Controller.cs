@@ -12,16 +12,14 @@ public class Character_Controller : MonoBehaviour
 
         //variables for magazine logic
         public int magazine = 7;
+        public int magazineCapacity = 7;
         public TextMeshProUGUI ammoDisplay;
         public bool magazineEmpty = false;
 
         //variables for raycast
         public int damage = 10;
         public float range = 100f;
-
-        //variables for healthsystem 
         
-
         public Camera fpsCam;
 
         // Start is called before the first frame update
@@ -35,10 +33,10 @@ public class Character_Controller : MonoBehaviour
         void Update()
         {
           
-        if ((Input.GetKey("w")) || (Input.GetKey("s")))
-            {
-                m_Animator.SetBool("isWalking", true);
-            }
+            if ((Input.GetKey("w")) || (Input.GetKey("s")))
+                {
+                    m_Animator.SetBool("isWalking", true);
+                }
 
             else
             {
@@ -87,13 +85,14 @@ public class Character_Controller : MonoBehaviour
 
             if (Input.GetKeyDown("r"))
             {
-
                 m_Animator.SetTrigger("Reload");
-                magazine = 7;
-                Debug.Log("Reload Animation");
             }
         }
-
+        
+        public void fillMagazine ()
+        {
+            magazine = magazineCapacity;
+        }
         void Shoot()
         {
             RaycastHit hit;
