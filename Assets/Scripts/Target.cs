@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using General;
+using UnityStandardAssets.Characters.ThirdPerson;
     public class Target : MonoBehaviour
     {
         //health of zombie 
@@ -14,7 +15,6 @@ using General;
         // Start is called before the first frame update
         void Start()
         {
-
         }
 
         // Update is called once per frame
