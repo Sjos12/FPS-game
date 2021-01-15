@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-
-    public class SpawnZombie : MonoBehaviour
+public class SpawnZombie : MonoBehaviour
     {
         //gameobject for spawning 
         public GameObject spawnObj;
+        public TextMeshProUGUI waveDisplay;
+        public TextMeshProUGUI zombieCounter;
         //public Wave[] waves;
         public int zombieAmount;
-        public int zombieSpawnAmount = 5;
+        public int zombieSpawnAmount = 3;
         public int wave = 0;
-        public int waveDisplay;
-        public int waveIncreaser = 4;
+        public int waveIncreaser = 3;
 
         //set custom range for random position
         public float MinX = 0;
@@ -27,8 +28,9 @@ using UnityEngine;
         //turn off or on 3D placement
         public bool is3D = false;
 
-        void Update()
+        public void Update()
         {
+            zombieCounter.text = zombieAmount.ToString();
             IEnumerator AllZombiesDead()
             {
 
@@ -37,9 +39,10 @@ using UnityEngine;
         }
         if (zombieAmount == 0)
             {
-                StartCoroutine(AllZombiesDead());
+                //StartCoroutine(AllZombiesDead());
                 SpawnWave(waveIncreaser);
                 wave += 1;
+                waveDisplay.text = wave.ToString();
         }
         }
         void SpawnWave(int waveMultiplier)

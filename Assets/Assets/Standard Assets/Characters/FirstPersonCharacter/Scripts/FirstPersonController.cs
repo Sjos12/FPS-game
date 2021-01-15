@@ -273,8 +273,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (playerHealth <= 0)
             {
                 //do code here for dying of character
-                Debug.Log("You died!");
-                
+                Time.timeScale = 0;
             }
         }
     }
