@@ -8,6 +8,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
     {
         //health of zombie 
         public int health = 100;
+        public bool dead = false;
         
         //time it takes for zombie to despawn after death.
         public float despawnDelay = 1f;
@@ -15,6 +16,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
         // Start is called before the first frame update
         void Start()
         {
+           
         }
 
         // Update is called once per frame
@@ -26,12 +28,16 @@ using UnityStandardAssets.Characters.ThirdPerson;
         //regulates health and damage taken
         public void TakeDamage(int amount)
         {
+            
             health -= amount;
-
+            
             GetComponent<Healthbar>().SetHealth(health);
-            if (health <= 0f)
+            if (health <= 0f && dead == false)
             {
                 Die();
+                GameObject zombieSpawner = GameObject.Find("Environment");
+                zombieSpawner.GetComponent<SpawnZombie>().zombieAmount -= 1;
+                dead = true;
             }
         }
 
@@ -44,14 +50,15 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
             target_animator.SetBool("isDead", true);
 
-            
-            //ZombieCharactercript script = gameObject.GetComponent<ZombieCharacterScript>();
-
-            //rb = GetComponent<Rigidbody>();
-            //destroys gameobject
             Destroy(gameObject, despawnDelay);
-            //rb.velocity = Vector3.zero;
-        }
+            
+        //ZombieCharactercript script = gameObject.GetComponent<ZombieCharacterScript>();
+
+        //rb = GetComponent<Rigidbody>();
+        //destroys gameobject
+
+        //rb.velocity = Vector3.zero;
+    }
 
     }
 

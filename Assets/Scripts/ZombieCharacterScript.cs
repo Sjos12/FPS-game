@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace UnityStandardAssets.Characters.ThirdPerson
-{
+
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
 	public class ZombieCharacterScript : MonoBehaviour
@@ -228,4 +227,4 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 	}
-}
+

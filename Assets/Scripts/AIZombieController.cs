@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
-namespace UnityStandardAssets.Characters.ThirdPerson
-{
+
     [RequireComponent(typeof (UnityEngine.AI.NavMeshAgent))]
     [RequireComponent(typeof (ZombieCharacterScript))]
     public class AIZombieController : MonoBehaviour
@@ -72,4 +71,4 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             this.target = target;
         }
     }
-}
+
