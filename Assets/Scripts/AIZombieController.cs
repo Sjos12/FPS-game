@@ -62,7 +62,7 @@ using UnityStandardAssets.Characters.FirstPerson;
             FirstPersonController playerScript = player.GetComponent<FirstPersonController>();
 
   
-            playerScript.playerTakeDamage(attackDamage);
+            //playerScript.playerTakeDamage(attackDamage);
             
         }
 
