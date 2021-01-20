@@ -78,7 +78,7 @@ public class Character_Controller : MonoBehaviour
                 {
                     m_Animator.SetTrigger("Fire");
                     m_shootingSound.Play();
-                    Debug.Log("Fire Animation");
+                    //Debug.Log("Fire Animation");
                 }
 
             }
@@ -117,6 +117,10 @@ public class Character_Controller : MonoBehaviour
 
                         target_animator.SetTrigger("Hit");
                     }
+                    else
+                {
+                    Debug.Log(hit);
+                }
                 }
             }
 

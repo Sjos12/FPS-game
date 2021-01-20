@@ -1,37 +1,37 @@
 using UnityEngine;
 
 
-	[RequireComponent(typeof(Rigidbody))]
-	[RequireComponent(typeof(CapsuleCollider))]
-	public class ZombieCharacterScript : MonoBehaviour
-	{
-		[SerializeField] float m_MovingTurnSpeed = 360;
-		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 12f;
-		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
-		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
-		[SerializeField] float m_AnimSpeedMultiplier = 1f;
-		[SerializeField] float m_GroundCheckDistance = 0.1f;
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
+public class ZombieCharacterScript : MonoBehaviour
+{
+	[SerializeField] float m_MovingTurnSpeed = 360;
+	[SerializeField] float m_StationaryTurnSpeed = 180;
+	[SerializeField] float m_JumpPower = 12f;
+	[Range(1f, 4f)] [SerializeField] float m_GravityMultiplier = 2f;
+	[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
+	[SerializeField] float m_AnimSpeedMultiplier = 1f;
+	[SerializeField] float m_GroundCheckDistance = 0.1f;
 
-		//controls movement speed.
-		public int m_MoveSpeedMultiplier = 0;
+	//controls movement speed.
+	public int m_MoveSpeedMultiplier = 0;
 
-		Rigidbody m_Rigidbody;
-		Animator m_Animator;
-		bool m_IsGrounded;
-		float m_OrigGroundCheckDistance;
-		const float k_Half = 0.5f;
-		float m_TurnAmount;
-		float m_ForwardAmount;
-		Vector3 m_GroundNormal;
-		float m_CapsuleHeight;
-		Vector3 m_CapsuleCenter;
-		CapsuleCollider m_Capsule;
-		bool m_Crouching;
+	Rigidbody m_Rigidbody;
+	Animator m_Animator;
+	bool m_IsGrounded;
+	float m_OrigGroundCheckDistance;
+	const float k_Half = 0.5f;
+	float m_TurnAmount;
+	float m_ForwardAmount;
+	Vector3 m_GroundNormal;
+	float m_CapsuleHeight;
+	Vector3 m_CapsuleCenter;
+	CapsuleCollider m_Capsule;
+	bool m_Crouching;
 
-		//accesses animator component of Armature object. 
-		public GameObject animator_object;
-
+	//accesses animator component of Armature object. 
+	public GameObject animator_object;
+	public GameObject environment;
 		
 
 		void Start()
@@ -42,9 +42,14 @@ using UnityEngine;
 			m_CapsuleHeight = m_Capsule.height;
 			m_CapsuleCenter = m_Capsule.center;
 
+			
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
-		}
+
+			//ignores the collision between zombie collider and environment collider since this causes isues for navmesh. 
+			environment = GameObject.FindGameObjectWithTag("Environment");
+			Physics.IgnoreCollision(environment.GetComponent<Collider>(), m_Capsule);
+	}
 
 
 		public void Move(Vector3 move, bool crouch, bool jump)
@@ -140,7 +145,7 @@ using UnityEngine;
 			float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
 			if (m_IsGrounded)
 			{
-				m_Animator.SetFloat("JumpLeg", jumpLeg);
+				//m_Animator.SetFloat("JumpLeg", jumpLeg);
 			}
 
 			// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,

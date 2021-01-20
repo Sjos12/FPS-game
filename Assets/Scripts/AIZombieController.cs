@@ -4,7 +4,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 
     [RequireComponent(typeof (UnityEngine.AI.NavMeshAgent))]
-    [RequireComponent(typeof (ZombieCharacterScript))]
+    //[RequireComponent(typeof (ZombieCharacterScript))]
     public class AIZombieController : MonoBehaviour
     {
         public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
