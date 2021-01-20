@@ -31,24 +31,26 @@ public class ZombieCharacterScript : MonoBehaviour
 
 	//accesses animator component of Armature object. 
 	public GameObject animator_object;
-	public GameObject environment;
-		
+	public GameObject[] environment;
 
-		void Start()
-		{
-			m_Animator = animator_object.GetComponent<Animator>();
-			m_Rigidbody = GetComponent<Rigidbody>();
-			m_Capsule = GetComponent<CapsuleCollider>();
-			m_CapsuleHeight = m_Capsule.height;
-			m_CapsuleCenter = m_Capsule.center;
 
-			
-			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-			m_OrigGroundCheckDistance = m_GroundCheckDistance;
+	void Start()
+	{
+		m_Animator = animator_object.GetComponent<Animator>();
+		m_Rigidbody = GetComponent<Rigidbody>();
+		m_Capsule = GetComponent<CapsuleCollider>();
+		m_CapsuleHeight = m_Capsule.height;
+		m_CapsuleCenter = m_Capsule.center;
 
-			//ignores the collision between zombie collider and environment collider since this causes isues for navmesh. 
-			environment = GameObject.FindGameObjectWithTag("Environment");
-			Physics.IgnoreCollision(environment.GetComponent<Collider>(), m_Capsule);
+		m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+		m_OrigGroundCheckDistance = m_GroundCheckDistance;
+
+		//ignores the collision between zombie collider and environment collider since this causes isues for navmesh. 
+		environment = GameObject.FindGameObjectsWithTag("Environment");
+		for (int i = 0; i < environment.Length; i++)
+        {
+			Physics.IgnoreCollision(environment[i].GetComponent<Collider>(), m_Capsule);
+        }
 	}
 
 
