@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
+//[RequireComponent(typeof(CapsuleCollider))]
 public class ZombieCharacterScript : MonoBehaviour
 {
 	[SerializeField] float m_MovingTurnSpeed = 360;
@@ -84,11 +84,10 @@ public class ZombieCharacterScript : MonoBehaviour
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
-		}
-
-
+	}
 		void ScaleCapsuleForCrouching(bool crouch)
 		{
+			
 			if (m_IsGrounded && crouch)
 			{
 				if (m_Crouching) return;

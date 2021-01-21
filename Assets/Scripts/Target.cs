@@ -35,8 +35,8 @@ using UnityStandardAssets.Characters.ThirdPerson;
             if (health <= 0f && dead == false)
             {
                 Die();
-                //GameObject zombieSpawner = GameObject.Find("Environment");
-                //zombieSpawner.GetComponent<SpawnZombie>().zombieAmount -= 1;
+                GameObject zombieSpawner = GameObject.Find("Environment");
+                zombieSpawner.GetComponent<SpawnZombie>().zombieAmount -= 1;
                 dead = true;
             }
         }
@@ -45,11 +45,12 @@ using UnityStandardAssets.Characters.ThirdPerson;
         {
             //Destroy(gameObject);
             GameObject armature = gameObject.transform.GetChild(0).gameObject;
-
+            //destroys hitbox inmediately after death. 
+            GetComponent<CapsuleCollider>().enabled = false;
             Animator target_animator = armature.GetComponent<Animator>();
 
             target_animator.SetBool("isDead", true);
-
+            //destroys itself after animation is finished.
             Destroy(gameObject, despawnDelay);
             
         //ZombieCharactercript script = gameObject.GetComponent<ZombieCharacterScript>();
