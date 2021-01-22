@@ -8,4 +8,8 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Ak-47 Animator
   m_Controller: {fileID: 9100000, guid: 88a2a173ca51db94e9408d9bcac1bf2a, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: cd14822005f729243a2023535af9754c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a1d24a17cfd774f4fb483ad69fa83cd1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f1dd50a5681673e4cba8112f82dc92aa, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2c81b364607f3bf418cc80809240bfdb, type: 2}

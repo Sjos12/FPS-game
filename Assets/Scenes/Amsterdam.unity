@@ -259,6 +259,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10879569}
   m_CullTransparentMesh: 1
+--- !u!1 &45804220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6719801526191123130, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+  m_PrefabInstance: {fileID: 1684785826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &52684135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,6 +1969,30 @@ PrefabInstance:
       propertyPath: ammoDisplay
       value: 
       objectReference: {fileID: 1794661915}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 45804220}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 99540401198508104}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: animationControllers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: animationControllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 9100000, guid: 88a2a173ca51db94e9408d9bcac1bf2a, type: 2}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: animationControllers.Array.data[1]
+      value: 
+      objectReference: {fileID: 22100000, guid: 9bdad6ef92a17114ca98e6d7bb18ed3e, type: 2}
     - target: {fileID: 7330255976067374841, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -2738,7 +2767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &238904413333786707
 GameObject:
   m_ObjectHideFlags: 0
