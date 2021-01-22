@@ -9,7 +9,8 @@ public class Character_Controller : MonoBehaviour
         Animator m_Animator;
         Animator target_animator;
         AudioSource m_shootingSound;
-
+        public RuntimeAnimatorController[] animationControllers;
+        public GameObject[] weapons;
         //variables for magazine logic
         public int magazine = 7;
         public int magazineCapacity = 7;
@@ -28,12 +29,20 @@ public class Character_Controller : MonoBehaviour
             m_Animator = gameObject.GetComponent<Animator>();
             m_shootingSound = GetComponent<AudioSource>();
         }
+        
 
         // Update is called once per frame
         void Update()
         {
-          
-            if ((Input.GetKey("w")) || (Input.GetKey("s")))
+        if (Input.GetKeyDown("1"))
+        {
+            weaponSwitch(0);
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            weaponSwitch(1);
+        }
+        if ((Input.GetKey("w")) || (Input.GetKey("s")))
                 {
                     m_Animator.SetBool("isWalking", true);
                 }
@@ -87,6 +96,16 @@ public class Character_Controller : MonoBehaviour
             {
                 m_Animator.SetTrigger("Reload");
             }
+        }
+        
+        public void weaponSwitch(int weaponSlot)
+        {
+            for (int i = 0; i < weapons.Length; i++)
+            {
+                weapons[i].SetActive(false);
+            }
+            weapons[weaponSlot].SetActive(true);
+            m_Animator.runtimeAnimatorController = animationControllers[weaponSlot];
         }
         
         public void fillMagazine ()
