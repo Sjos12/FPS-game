@@ -36,10 +36,12 @@ public class Character_Controller : MonoBehaviour
         {
         if (Input.GetKeyDown("1"))
         {
+            //m_Animator.SetTrigger("SwitchGun");
             weaponSwitch(0);
         }
         if (Input.GetKeyDown("2"))
         {
+            m_Animator.SetTrigger("SwitchGun");
             weaponSwitch(1);
         }
         if ((Input.GetKey("w")) || (Input.GetKey("s")))
@@ -100,10 +102,12 @@ public class Character_Controller : MonoBehaviour
         
         public void weaponSwitch(int weaponSlot)
         {
+            //disables all weapons. 
             for (int i = 0; i < weapons.Length; i++)
             {
                 weapons[i].SetActive(false);
             }
+            //enables the weapon which has been selected and it's corresponding animator. 
             weapons[weaponSlot].SetActive(true);
             m_Animator.runtimeAnimatorController = animationControllers[weaponSlot];
         }
