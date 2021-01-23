@@ -11,14 +11,18 @@ public class Character_Controller : MonoBehaviour
         AudioSource m_shootingSound;
         public RuntimeAnimatorController[] animationControllers;
         public GameObject[] weapons;
+        public AudioClip[] audioClips;
         //variables for magazine logic
         public int magazine = 7;
         public int magazineCapacity = 7;
         public TextMeshProUGUI ammoDisplay;
         public bool magazineEmpty = false;
+        public bool fullAuto = false;
+        float fireRate = 2f;
+        float fireTime = 0;
 
         //variables for raycast
-        public int damage = 10;
+    public int damage = 10;
         public float range = 100f;
         
         public Camera fpsCam;
@@ -34,20 +38,20 @@ public class Character_Controller : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-        if (Input.GetKeyDown("1"))
-        {
-            //m_Animator.SetTrigger("SwitchGun");
-            weaponSwitch(0);
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            m_Animator.SetTrigger("SwitchGun");
-            weaponSwitch(1);
-        }
-        if ((Input.GetKey("w")) || (Input.GetKey("s")))
-                {
-                    m_Animator.SetBool("isWalking", true);
-                }
+            if (Input.GetKeyDown("1"))
+            {
+                //m_Animator.SetTrigger("SwitchGun");
+                weaponSwitch(0, fullAuto = false, damage = 20, range = 200f, fireRate, magazineCapacity = 7);
+            }
+            if (Input.GetKeyDown("2"))
+            {
+                //.SetTrigger("SwitchGun");
+                weaponSwitch(1, fullAuto = true, damage = 20, range = 200f, fireRate = 10f, magazineCapacity = 30);
+            }
+            if ((Input.GetKey("w")) || (Input.GetKey("s")))
+            {
+                m_Animator.SetBool("isWalking", true);
+            }
 
             else
             {
@@ -64,22 +68,20 @@ public class Character_Controller : MonoBehaviour
             }
 
             ammoDisplay.text = magazine.ToString();
+            if (Input.GetButton("Fire1"))
+            {
+                if (fullAuto == true && (magazineEmpty == false))
+                    {
+                        if (Time.time - fireTime > 1 / fireRate)
+                        {
+                            fireTime = Time.time;
+                            Shoot();
+                        
+                        }
+                }
+            }
             if (Input.GetButtonDown("Fire1"))
             {
-                //raycast shooting logic function
-                Shoot();
-
-                if (magazine == 0)
-                {
-                    magazineEmpty = true;
-                }
-
-                else
-                {
-                    magazine = magazine - 1;
-                    magazineEmpty = false;
-                }
-
                 if (magazineEmpty == true)
                 {
                     Debug.Log("Empty mag");
@@ -87,11 +89,25 @@ public class Character_Controller : MonoBehaviour
 
                 else
                 {
-                    m_Animator.SetTrigger("Fire");
-                    m_shootingSound.Play();
+                    
+                    if (magazineEmpty == false)
+                    {
+                        if (fullAuto == false)
+                        {
+                            Shoot();
+
+                        }
+                    }
+                    
+
+                    if (magazine == 0)
+                    {
+                        magazineEmpty = true;
+                    }
+
+                    
                     //Debug.Log("Fire Animation");
                 }
-
             }
 
             if (Input.GetKeyDown("r"))
@@ -100,34 +116,41 @@ public class Character_Controller : MonoBehaviour
             }
         }
         
-        public void weaponSwitch(int weaponSlot)
+        public void weaponSwitch(int weaponSlot, bool fullAuto, int damage, float range, float fireRate, int magazineCapacity)
         {
             //disables all weapons. 
             for (int i = 0; i < weapons.Length; i++)
             {
                 weapons[i].SetActive(false);
             }
+
             //enables the weapon which has been selected and it's corresponding animator. 
             weapons[weaponSlot].SetActive(true);
             m_Animator.runtimeAnimatorController = animationControllers[weaponSlot];
+            m_shootingSound.clip = audioClips[weaponSlot];
         }
         
         public void fillMagazine ()
         {
             magazine = magazineCapacity;
         }
+
+            
         void Shoot()
-        {
+            {
             RaycastHit hit;
 
             //makes sure player can't shoot with empty mag
             if (magazineEmpty == false)
             {
-                //shoots a ray
-                if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+            m_Animator.SetTrigger("Fire");
+            m_shootingSound.Play();
+            magazine = magazine - 1;
+            //shoots a ray
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
                 {
                     Target target = hit.transform.GetComponent<Target>();
-
+                    
                     if (target != null)
                     {
                         //raycast target takes damage
@@ -141,9 +164,9 @@ public class Character_Controller : MonoBehaviour
                         target_animator.SetTrigger("Hit");
                     }
                     else
-                {
-                    Debug.Log(hit);
-                }
+                    {
+                        Debug.Log(hit);
+                    }
                 }
             }
 

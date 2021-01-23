@@ -1547,7 +1547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1429187441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,12 +1567,12 @@ MonoBehaviour:
   zombieSpawnAmount: 3
   wave: 0
   waveIncreaser: 3
-  MinX: 7
-  MaxX: 10
+  MinX: 2
+  MaxX: 4
   MinY: 0
   MaxY: 0
-  MinZ: 7
-  MaxZ: 10
+  MinZ: 2
+  MaxZ: 4
   is3D: 0
 --- !u!4 &1429187442
 Transform:
@@ -1836,6 +1836,18 @@ PrefabInstance:
     - target: {fileID: 2726993922390887901, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804720159126189742, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000000013876706
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804720159126189742, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.009024897
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804720159126189742, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.2351741e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2804720159126189742, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2385,6 +2397,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7324731794906661505, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7324731794906661506, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -2398,6 +2414,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
       objectReference: {fileID: 45804220}
@@ -2405,6 +2425,14 @@ PrefabInstance:
       propertyPath: weapons.Array.data[1]
       value: 
       objectReference: {fileID: 99540401198508104}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 85016be519bec2d47952e2543983cf33, type: 3}
+    - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
+      propertyPath: audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b4a3456d2b8d830429d372c9eee8ddc7, type: 3}
     - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: animationControllers.Array.size
       value: 2
@@ -2435,19 +2463,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7546178958414647414, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99972486
+      value: 0.9997249
       objectReference: {fileID: 0}
     - target: {fileID: 7546178958414647414, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.009946718
+      value: 0.00994486
       objectReference: {fileID: 0}
     - target: {fileID: 7546178958414647414, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0043484936
+      value: 0.0043487954
       objectReference: {fileID: 0}
     - target: {fileID: 7546178958414647414, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.020792302
+      value: 0.020791652
       objectReference: {fileID: 0}
     - target: {fileID: 7546178958414647414, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
