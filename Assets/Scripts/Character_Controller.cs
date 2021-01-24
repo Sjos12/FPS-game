@@ -70,6 +70,10 @@ public class Character_Controller : MonoBehaviour
             ammoDisplay.text = magazine.ToString();
             if (Input.GetButton("Fire1"))
             {
+                if (magazine <= 0)
+                {
+                    magazineEmpty = true;
+                }
                 if (fullAuto == true && (magazineEmpty == false))
                     {
                         if (Time.time - fireTime > 1 / fireRate)
@@ -133,6 +137,7 @@ public class Character_Controller : MonoBehaviour
         public void fillMagazine ()
         {
             magazine = magazineCapacity;
+            magazineEmpty = false;
         }
 
             
