@@ -148,16 +148,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10879569}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 573368109}
-  m_RootOrder: 3
+  m_Father: {fileID: 2082907784}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -826, y: 30.671}
+  m_AnchoredPosition: {x: 56, y: 40.670998}
   m_SizeDelta: {x: 200, y: 122.012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10879571
@@ -841,13 +841,12 @@ RectTransform:
   - {fileID: 235638135}
   - {fileID: 1794661914}
   - {fileID: 1699126854}
-  - {fileID: 10879570}
   m_Father: {fileID: 2082907784}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110, y: 60}
+  m_AnchoredPosition: {x: -109.3, y: 61}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &573368110
@@ -1065,11 +1064,11 @@ RectTransform:
   - {fileID: 577937498}
   - {fileID: 1109563969}
   m_Father: {fileID: 2082907784}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 445.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -496, y: 190.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &699139794 stripped
@@ -1943,7 +1942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956487228653328882, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_RenderingPath
-      value: -1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3956487228654929906, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_RootOrder
@@ -3217,6 +3216,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 575410482}
+  - {fileID: 10879570}
   - {fileID: 573368109}
   - {fileID: 588067823}
   m_Father: {fileID: 272731077}
