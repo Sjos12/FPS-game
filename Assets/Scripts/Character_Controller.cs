@@ -48,7 +48,13 @@ public class Character_Controller : MonoBehaviour
                 //.SetTrigger("SwitchGun");
                 weaponSwitch(1, fullAuto = true, damage = 20, range = 200f, fireRate = 8f, magazineCapacity = 30);
             }
-            if ((Input.GetKey("w")) || (Input.GetKey("s")))
+
+            if (Input.GetKeyDown("3"))
+            {
+                //.SetTrigger("SwitchGun");
+                weaponSwitch(2, fullAuto = false, damage = 25, range = 200f, fireRate, magazineCapacity = 17);
+            }
+        if ((Input.GetKey("w")) || (Input.GetKey("s")))
             {
                 m_Animator.SetBool("isWalking", true);
             }

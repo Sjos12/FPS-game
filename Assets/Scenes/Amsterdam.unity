@@ -1674,7 +1674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1429187441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,7 +2575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6719801526191123130, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6719975035373274690, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_Layer
@@ -2640,7 +2640,7 @@ PrefabInstance:
     - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: audioClips.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: b4a3456d2b8d830429d372c9eee8ddc7, type: 3}
+      objectReference: {fileID: 8300000, guid: 95fedcd0ce0e07446838b6934a026428, type: 3}
     - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: animationControllers.Array.size
       value: 3
@@ -2656,7 +2656,7 @@ PrefabInstance:
     - target: {fileID: 7324731794906661507, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: animationControllers.Array.data[2]
       value: 
-      objectReference: {fileID: 9100000, guid: 88a2a173ca51db94e9408d9bcac1bf2a, type: 2}
+      objectReference: {fileID: 22100000, guid: 0975e713130caf542bfea191072b9bc1, type: 2}
     - target: {fileID: 7330255976067374841, guid: e57af54fb6087a74f9dd9537b54c7b5c, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -4506,7 +4506,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 8305420943161829149}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3852143803903096477
 Transform:
@@ -4697,7 +4697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4153659573904773380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5832,8 +5832,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8143957842464415111}
-  - {fileID: 2074882161}
   - {fileID: 3762090043988496863}
+  - {fileID: 2074882161}
   - {fileID: 624283869182027029}
   - {fileID: 6800745370829295087}
   - {fileID: 4280029831237115435}
