@@ -48,7 +48,6 @@ using UnityStandardAssets.Characters.FirstPerson;
                 //finds animator on the armature of the zombie
                 GameObject armature = gameObject.transform.GetChild(0).gameObject;
                 Animator target_animator = armature.GetComponent<Animator>();
-
                 //sets trigger 'attack'
                 target_animator.SetTrigger("Attack");
             }
@@ -57,12 +56,12 @@ using UnityStandardAssets.Characters.FirstPerson;
         public void attackPlayer()
         {
    
-            //player = GameObject.Find("FPSController_Low_Poly");
+            player = GameObject.FindGameObjectWithTag("Player");
 
             FirstPersonController playerScript = player.GetComponent<FirstPersonController>();
 
   
-            //playerScript.playerTakeDamage(attackDamage);
+            playerScript.playerTakeDamage(attackDamage);
             
         }
 
