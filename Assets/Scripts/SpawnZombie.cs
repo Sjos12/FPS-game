@@ -61,7 +61,7 @@ public class SpawnZombie : MonoBehaviour
 
             GameObject zombie = Instantiate(spawnObj, new Vector3(x, y, z), Quaternion.identity);
 
-            zombie.GetComponent<AIZombieController>().target = GameObject.Find("FPSController_Low_Poly").transform;
+            zombie.GetComponent<AIZombieController>().target = GameObject.FindGameObjectWithTag("Player").transform;
 
             zombieAmount += 1; 
         }

@@ -14,7 +14,7 @@ public class DoorScript : MonoBehaviour
     void Start()
     {
         m_animator = GetComponent<Animator>();
-        player = GameObject.Find("FPSController_Low_Poly");
+        player = GameObject.FindGameObjectWithTag("Player");
         
     }
 
