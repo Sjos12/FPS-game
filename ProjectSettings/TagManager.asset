@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Barricade
   - Blueprint
+  - Zombie
   layers:
   - Default
   - TransparentFX

@@ -11,10 +11,16 @@ public class ObjectTakeDamage : MonoBehaviour
         
     }
 
+    public void objectTakeDamage(int damage)
+    {
+        health = -damage;
+        GetComponent<Healthbar>().SetHealth(health);
+    }
+
     // Update is called once per frame
     void Update()
     {
         
-        GetComponent<Healthbar>().SetHealth(health);
+        
     }
 }

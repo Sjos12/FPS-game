@@ -58,19 +58,13 @@ public class AIZombieController : MonoBehaviour
             target_animator.SetTrigger("Attack");
             
         }
-        //Debug.Log(collider.gameObject.tag);
-        if (collider.gameObject.tag == "Barricade")
-        {
-            target_animator.SetTrigger("Attack");
-            
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.tag == "Barricade" || collision.collider.gameObject.tag == "Door")
         {
-            target_animator.SetTrigger("Attack");
+            target_animator.SetTrigger("ObjectAttack");
         }
     }
     public void attackPlayer()
