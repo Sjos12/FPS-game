@@ -18,8 +18,12 @@ public class BuildScript : MonoBehaviour
         blueprints = GameObject.FindGameObjectsWithTag("Blueprint");
         for (int i = 0; i < blueprints.Length; i++)
         {
-            blueprints[i].SetActive(false);
+            if (blueprints[i] != null)
+            {
+                blueprints[i].SetActive(false);
+            }
         }
+            
     }
 
     // Update is called once per frame
@@ -34,14 +38,21 @@ public class BuildScript : MonoBehaviour
             {
                 for (int i = 0; i < blueprints.Length; i++)
                 {
-                    blueprints[i].SetActive(true);
+                    if (blueprints[i] != null)
+                    {
+                        blueprints[i].SetActive(true);
+                    }
                 }
             }
             else
             {
                 for (int i = 0; i < blueprints.Length; i++)
                 {
-                    blueprints[i].SetActive(false);
+
+                    if (blueprints[i] != null)
+                    {
+                        blueprints[i].SetActive(false);
+                    }
                 }
             }  
         }
@@ -56,7 +67,7 @@ public class BuildScript : MonoBehaviour
                     Instantiate(placeableObject, hit.collider.gameObject.transform.position, hit.collider.gameObject.transform.rotation);
                     //hit.transform.gameObject.tag = "BlueprintReplaced";
                     Destroy(hit.transform.gameObject);
-                    blueprints = GameObject.FindGameObjectsWithTag("Blueprint");
+                    //blueprints = GameObject.FindGameObjectsWithTag("Blueprint");
                 }
             }
         }
