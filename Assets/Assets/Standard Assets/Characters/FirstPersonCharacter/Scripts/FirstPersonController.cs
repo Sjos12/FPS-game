@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        public int health = 1000;
+        public int health = 100;
         public GameObject healthbar;
         // Use this for initialization
         private void Start()
@@ -63,6 +63,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            if (health >= 0)
+            {
+                
+            }
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)

@@ -6,15 +6,27 @@ public class playerTakeDamage : MonoBehaviour
 {
     public GameObject zombie;
     public GameObject barricade;
-    private int damage;
+    
+    private int damage = 20;
+
+    private void Start()
+    {
+        damage = zombie.GetComponent<AIZombieController>().attackDamage;
+    }
     public void hitRegister()
     {
         //zombie = GameObject.FindGameObjectWithTag("Zombie");
-        zombie.GetComponent<AIZombieController>().attackPlayer();
-        damage = zombie.GetComponent<AIZombieController>().attackDamage;
-}
+        if (zombie.GetComponent<AIZombieController>().distance < zombie.GetComponent<AIZombieController>().minimumAttackRange)
+        {
+            zombie.GetComponent<AIZombieController>().attackPlayer();
+        }
+        
+    }
     public void objectAttack()
     {
-        barricade.GetComponent<ObjectTakeDamage>().objectTakeDamage(damage);
+        if (barricade != null)
+        {
+            barricade.GetComponent<ObjectTakeDamage>().objectTakeDamage(damage);
+        }   
     }
 }

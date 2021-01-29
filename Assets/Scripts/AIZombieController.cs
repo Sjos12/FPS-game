@@ -22,7 +22,7 @@ public class AIZombieController : MonoBehaviour
     public GameObject player;
 
     //zombie attack strength
-    public int attackDamage = 10;
+    public int attackDamage = 25;
 
     private void Start()
     {
@@ -64,7 +64,12 @@ public class AIZombieController : MonoBehaviour
     {
         if (collision.collider.gameObject.tag == "Barricade" || collision.collider.gameObject.tag == "Door")
         {
-            target_animator.SetTrigger("ObjectAttack");
+            armature.GetComponent<playerTakeDamage>().barricade = collision.collider.gameObject;
+            target_animator.SetBool("isAttackingObject", true);
+        }
+        else
+        {
+            target_animator.SetBool("isAttackingObject", false);
         }
     }
     public void attackPlayer()

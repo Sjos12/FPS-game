@@ -1029,9 +1029,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   distance: 0
-  minimumAttackRange: 1.5
+  minimumAttackRange: 1.6
   player: {fileID: 0}
-  attackDamage: 5
+  attackDamage: 25
 --- !u!114 &1080212766568065525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,6 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 1080212766568065531}
+  barricade: {fileID: 0}
 --- !u!1 &1080212766656330732
 GameObject:
   m_ObjectHideFlags: 0

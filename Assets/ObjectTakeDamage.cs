@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectTakeDamage : MonoBehaviour
 {
-    int health = 200;
+    public int health = 200;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,14 +13,17 @@ public class ObjectTakeDamage : MonoBehaviour
 
     public void objectTakeDamage(int damage)
     {
-        health = -damage;
+        health = health - damage;
         GetComponent<Healthbar>().SetHealth(health);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (health == 0 )
+        {
+            Destroy(gameObject);
+        }
         
     }
 }

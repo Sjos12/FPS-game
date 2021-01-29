@@ -84,9 +84,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 250
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 250
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 6180750976865488627}
   - component: {fileID: 6180750976865488638}
   m_Layer: 0
-  m_Name: SandBag 1
+  m_Name: SandBag
   m_TagString: Barricade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c57a2856622be04ab71dd4061515463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 250
 --- !u!114 &6180750976865488638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32995b616db9c224a81b4ba5d49aa03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  slider: {fileID: 6180750976949146851}
   gradient:
     serializedVersion: 2
     key0: {r: 0.7169812, g: 0, b: 0, a: 1}
@@ -646,4 +647,4 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 3
-  fill: {fileID: 0}
+  fill: {fileID: 6180750977739624297}
