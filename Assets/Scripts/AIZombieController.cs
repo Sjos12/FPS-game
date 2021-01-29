@@ -62,14 +62,16 @@ public class AIZombieController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.tag == "Barricade" || collision.collider.gameObject.tag == "Door")
+        if (collision.collider.gameObject.tag == "Barricade")
         {
             armature.GetComponent<playerTakeDamage>().barricade = collision.collider.gameObject;
+
             target_animator.SetBool("isAttackingObject", true);
         }
         else
         {
             target_animator.SetBool("isAttackingObject", false);
+            armature.GetComponent<playerTakeDamage>().barricade = null;
         }
     }
     public void attackPlayer()
