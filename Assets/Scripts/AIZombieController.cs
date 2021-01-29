@@ -9,13 +9,17 @@ using UnityStandardAssets.Characters.FirstPerson;
     {
         public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
         public ZombieCharacterScript character { get; private set; } // the character we are controlling
+        Collider collider;
+        Animator target_animator;
         public Transform target;                                    // target to aim for
         public float distance;
         //minimum attack range of zombie
         public float minimumAttackRange = 2f;
+    //finds animator on the armature of the zombie
+    GameObject armature;
 
-        //The player object
-        public GameObject player;
+    //The player object
+    public GameObject player;
         
         //zombie attack strength
         public int attackDamage = 10;
@@ -25,14 +29,18 @@ using UnityStandardAssets.Characters.FirstPerson;
             // get the components on the object we need ( should not be null due to require component so no need to check )
             agent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
             character = GetComponent<ZombieCharacterScript>();
-
-	        agent.updateRotation = false;
+            collider = GetComponent<Collider>();
+            armature = gameObject.transform.GetChild(0).gameObject;
+            target_animator = armature.GetComponent<Animator>();
+            agent.updateRotation = false;
 	        agent.updatePosition = true;
         }
 
 
         private void Update()
         {
+            
+            
             if (target != null)
                 agent.SetDestination(target.position);
                 //checks distance between zombie and player. 
@@ -45,13 +53,15 @@ using UnityStandardAssets.Characters.FirstPerson;
 
             //code for attacking player.
             if (distance < minimumAttackRange) {
-                //finds animator on the armature of the zombie
-                GameObject armature = gameObject.transform.GetChild(0).gameObject;
-                Animator target_animator = armature.GetComponent<Animator>();
                 //sets trigger 'attack'
                 target_animator.SetTrigger("Attack");
             }
-        }
+            Debug.Log(collider.gameObject.tag);
+            if (collider.gameObject.tag == "Barricade")
+            {
+                target_animator.SetTrigger("Attack");
+            }
+    }
 
         public void attackPlayer()
         {
