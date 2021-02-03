@@ -20,6 +20,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1080212766568065522, guid: bf2f24d4d8e053d4a8cb173b0ab5bbb1, type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080212766568065522, guid: bf2f24d4d8e053d4a8cb173b0ab5bbb1, type: 3}
       propertyPath: m_Acceleration
       value: 4
       objectReference: {fileID: 0}
