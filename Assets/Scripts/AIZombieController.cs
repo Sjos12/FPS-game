@@ -20,7 +20,8 @@ public class AIZombieController : MonoBehaviour
     DamageObject target_script;
     //The player object
     public GameObject player;
-
+    public float climbSpeed = 1f;
+    public float defaultAgentSpeed;
     //zombie attack strength
     public int attackDamage = 25;
 
@@ -35,12 +36,22 @@ public class AIZombieController : MonoBehaviour
         target_script = armature.GetComponent<DamageObject>();
         agent.updateRotation = false;
         agent.updatePosition = true;
+        defaultAgentSpeed = agent.speed;
     }
 
 
     private void Update()
     {
-
+        if (agent.isOnOffMeshLink)
+        {
+            agent.speed = climbSpeed;
+            target_animator.SetBool("isClimbing", true);  
+        }
+        else
+        {
+            agent.speed = defaultAgentSpeed;
+            target_animator.SetBool("isClimbing", false);
+        }
 
         if (target != null)
             agent.SetDestination(target.position);
@@ -51,6 +62,8 @@ public class AIZombieController : MonoBehaviour
             character.Move(agent.desiredVelocity, false, false);
         else
             character.Move(Vector3.zero, false, false);
+
+
 
         //code for attacking player.
         if (distance < minimumAttackRange) {
