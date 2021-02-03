@@ -36,6 +36,7 @@ public class AIZombieController : MonoBehaviour
         target_script = armature.GetComponent<DamageObject>();
         agent.updateRotation = false;
         agent.updatePosition = true;
+        agent.autoTraverseOffMeshLink = true;
         defaultAgentSpeed = agent.speed;
     }
 
@@ -49,14 +50,26 @@ public class AIZombieController : MonoBehaviour
 
         if (agent.isOnOffMeshLink)
         {
+            agent.speed = climbSpeed;
+            target_animator.SetBool("isClimbing", true);
+            //target_animator.SetBool("isClimbing", true);
             RaycastHit hit;
-            if (Physics.Raycast(agent.transform.position, agent.transform.forward, out hit, 3f)) {
-                if (hit.collider.gameObject.tag != "Environment")
+            if (Physics.Raycast(agent.transform.position, agent.transform.forward, out hit, 3f))
+            {
+                if (hit.collider.gameObject.tag == "Environment")
                 {
-                    target_animator.SetTrigger("climbFinal");
+                    target_animator.SetBool("isClimbing", true);
+                    
                     Debug.Log("climbFinal");
                 }
+                
+                else
+                {
+                    target_animator.SetBool("isClimbing", true);
+                    Debug.Log("nothing");
+                }
             }
+             
         }
         else
         {
