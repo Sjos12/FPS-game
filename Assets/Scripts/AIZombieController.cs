@@ -42,10 +42,21 @@ public class AIZombieController : MonoBehaviour
 
     private void Update()
     {
+        
+
+        //when the agent reach the end point you should tell it, and the agent will "exit" the link and work normally after that
+        
+
         if (agent.isOnOffMeshLink)
         {
-            agent.speed = climbSpeed;
-            target_animator.SetBool("isClimbing", true);  
+            RaycastHit hit;
+            if (Physics.Raycast(agent.transform.position, agent.transform.forward, out hit, 3f)) {
+                if (hit.collider.gameObject.tag != "Environment")
+                {
+                    target_animator.SetTrigger("climbFinal");
+                    Debug.Log("climbFinal");
+                }
+            }
         }
         else
         {

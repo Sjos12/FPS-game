@@ -5,11 +5,6 @@ using UnityEngine;
 public class ObjectTakeDamage : MonoBehaviour
 {
     public int health = 200;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void objectTakeDamage(int damage)
     {
