@@ -23,6 +23,7 @@ public class AIZombieController : MonoBehaviour
     public float climbSpeed = 1f;
     public float defaultAgentSpeed;
     bool climbFinal;
+    public bool hasJumped = false;
     //zombie attack strength
     public int attackDamage = 25;
 
@@ -46,25 +47,47 @@ public class AIZombieController : MonoBehaviour
     {
         if (agent.isOnOffMeshLink)
         {
-            agent.speed = climbSpeed;
-            //target_animator.SetBool("isClimbing", true);
+            //agent.speed = climbSpeed;
             RaycastHit hit;
             Vector3 shootPosition = transform.position + new Vector3(0, 2.5f, 0);
+            Vector3 shootPositionJumpRay = transform.position + new Vector3(0, -3f, 0);
+            
             if (Physics.Raycast(shootPosition, transform.forward, out hit, 2.5f))
             {
+                agent.speed = climbSpeed;
                 target_animator.SetBool("isClimbing", true);
                 climbFinal = true;
             }
             else if (climbFinal == true)
             {
+               agent.speed = climbSpeed;
                target_animator.SetBool("isClimbing", false);
                target_animator.SetTrigger("climbFinal");
-                climbFinal = false;
+               climbFinal = false;
+            }
+
+            if (Physics.Raycast(shootPositionJumpRay, -transform.forward, out hit, 1.5f))
+            {
+                Debug.Log(Vector3.Angle(agent.transform.forward, hit.normal));
+                if (Vector3.Angle(agent.transform.forward, hit.normal) > 60 && (hasJumped == false)) {
+                    target_animator.SetTrigger("Jump");
+                    agent.speed = climbSpeed + 3f;
+                    hasJumped = true;
+                }
+
+                else {
+                    //agent.speed = climbSpeed;
+                }
+            }
+            else 
+            {
+                //agent.speed = defaultAgentSpeed;
             }
 
         }
         else
         {
+            hasJumped = false;
             agent.speed = defaultAgentSpeed;
             target_animator.SetBool("isClimbing", false);
         }
@@ -95,11 +118,11 @@ public class AIZombieController : MonoBehaviour
         {
             armature.GetComponent<playerTakeDamage>().barricade = collision.collider.gameObject;
 
-            target_animator.SetBool("isAttackingObject", true);
+            //target_animator.SetBool("isAttackingObject", true);
         }
         else
         {
-            target_animator.SetBool("isAttackingObject", false);
+            //target_animator.SetBool("isAttackingObject", false);
             armature.GetComponent<playerTakeDamage>().barricade = null;
         }
     }

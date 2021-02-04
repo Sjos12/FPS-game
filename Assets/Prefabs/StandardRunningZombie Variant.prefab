@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.3347168}
+  m_AnchoredPosition: {x: 0, y: 3.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6226454539037202150
@@ -567,7 +567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6226454539231855117}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: -0.94, z: 0}
+  m_LocalPosition: {x: 0, y: -1.0247167, z: 0}
   m_LocalScale: {x: 26.265335, y: 26.265335, z: 26.265335}
   m_Children: []
   m_Father: {fileID: 6226454539877611307}
@@ -966,7 +966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6226454539771456856}
   m_LocalRotation: {x: -0.7071067, y: -0.0000000126036905, z: 0.000000011877961, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.4217167, z: -0.00044892967}
+  m_LocalPosition: {x: 0, y: 1.3369999, z: -0.00044892967}
   m_LocalScale: {x: 24.982409, y: 24.982409, z: 24.982409}
   m_Children:
   - {fileID: 6226454539925929210}
@@ -1182,6 +1182,7 @@ MonoBehaviour:
   player: {fileID: 0}
   climbSpeed: 1
   defaultAgentSpeed: 0
+  hasJumped: 0
   attackDamage: 25
 --- !u!114 &6226454539877611301
 MonoBehaviour:
