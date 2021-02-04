@@ -22,6 +22,7 @@ public class AIZombieController : MonoBehaviour
     public GameObject player;
     public float climbSpeed = 1f;
     public float defaultAgentSpeed;
+    bool climbFinal;
     //zombie attack strength
     public int attackDamage = 25;
 
@@ -43,33 +44,24 @@ public class AIZombieController : MonoBehaviour
 
     private void Update()
     {
-        
-
-        //when the agent reach the end point you should tell it, and the agent will "exit" the link and work normally after that
-        
-
         if (agent.isOnOffMeshLink)
         {
             agent.speed = climbSpeed;
-            target_animator.SetBool("isClimbing", true);
             //target_animator.SetBool("isClimbing", true);
             RaycastHit hit;
-            if (Physics.Raycast(agent.transform.position, agent.transform.forward, out hit, 3f))
+            Vector3 shootPosition = transform.position + new Vector3(0, 2.5f, 0);
+            if (Physics.Raycast(shootPosition, transform.forward, out hit, 2.5f))
             {
-                if (hit.collider.gameObject.tag == "Environment")
-                {
-                    target_animator.SetBool("isClimbing", true);
-                    
-                    Debug.Log("climbFinal");
-                }
-                
-                else
-                {
-                    target_animator.SetBool("isClimbing", true);
-                    Debug.Log("nothing");
-                }
+                target_animator.SetBool("isClimbing", true);
+                climbFinal = true;
             }
-             
+            else if (climbFinal == true)
+            {
+               target_animator.SetBool("isClimbing", false);
+               target_animator.SetTrigger("climbFinal");
+                climbFinal = false;
+            }
+
         }
         else
         {
