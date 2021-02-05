@@ -7,6 +7,9 @@ public class SpawnZombie : MonoBehaviour
     {
         //gameobject for spawning 
         public GameObject spawnObj;
+        public GameObject[] spawnPoints;
+        public Vector3[] spawnLocations;
+        GameObject zombie;
         public TextMeshProUGUI waveDisplay;
         public TextMeshProUGUI zombieCounter;
         //public Wave[] waves;
@@ -28,6 +31,10 @@ public class SpawnZombie : MonoBehaviour
         //turn off or on 3D placement
         public bool is3D = false;
 
+        private void Start()
+        {
+            spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        }
         public void Update()
         {
             zombieCounter.text = zombieAmount.ToString();
@@ -58,16 +65,15 @@ public class SpawnZombie : MonoBehaviour
             float x = Random.Range(MinX, MaxX);
             float y = Random.Range(MinY, MaxY);
             float z = Random.Range(MinZ, MaxZ);
-
-            GameObject zombie = Instantiate(spawnObj, new Vector3(x, y, z), Quaternion.identity);
-
-            zombie.GetComponent<AIZombieController>().target = GameObject.FindGameObjectWithTag("Player").transform;
-
-            zombieAmount += 1; 
+            
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                spawnPoints[i].transform.position = spawnPoints[i].transform.position + new Vector3(x, y, z);
+                zombie = Instantiate(spawnObj, spawnPoints[i].transform.position, Quaternion.identity);
+                zombie.GetComponent<AIZombieController>().target = GameObject.FindGameObjectWithTag("Player").transform;
+                zombieAmount += 1;
+            }
         }
-
-        
-
     }
 
 

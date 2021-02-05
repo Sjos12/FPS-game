@@ -9,6 +9,7 @@ TagManager:
   - Barricade
   - Blueprint
   - Zombie
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

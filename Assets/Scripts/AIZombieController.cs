@@ -49,7 +49,7 @@ public class AIZombieController : MonoBehaviour
         {
             //agent.speed = climbSpeed;
             RaycastHit hit;
-            Vector3 shootPosition = transform.position + new Vector3(0, 2.5f, 0);
+            Vector3 shootPosition = transform.position + new Vector3(0, 2.2f, 0);
             Vector3 shootPositionJumpRay = transform.position + new Vector3(0, -3f, 0);
             
             if (Physics.Raycast(shootPosition, transform.forward, out hit, 2.5f))
