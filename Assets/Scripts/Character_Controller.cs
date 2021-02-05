@@ -11,6 +11,7 @@ public class Character_Controller : MonoBehaviour
         AudioSource m_shootingSound;
         public RuntimeAnimatorController[] animationControllers;
         public GameObject[] weapons;
+        public GameObject[] muzzleFlashes;
         public AudioClip[] audioClips;
         //variables for magazine logic
         public int magazine = 7;
@@ -20,9 +21,10 @@ public class Character_Controller : MonoBehaviour
         public bool fullAuto = false;
         float fireRate = 2f;
         float fireTime = 0;
-
+        int activeWeapon;
+        public float targetTime = 60.0f;
         //variables for raycast
-    public int damage = 10;
+        public int damage = 10;
         public float range = 100f;
         
         public Camera fpsCam;
@@ -38,7 +40,7 @@ public class Character_Controller : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("1"))
             {
                 //m_Animator.SetTrigger("SwitchGun");
                 weaponSwitch(0, fullAuto = true, damage = 20, range = 200f, fireRate = 8f, magazineCapacity = 30); 
@@ -134,6 +136,7 @@ public class Character_Controller : MonoBehaviour
                 weapons[i].SetActive(false);
             }
 
+            activeWeapon = weaponSlot;
             //enables the weapon which has been selected and it's corresponding animator. 
             weapons[weaponSlot].SetActive(true);
             m_Animator.runtimeAnimatorController = animationControllers[weaponSlot];
@@ -156,6 +159,7 @@ public class Character_Controller : MonoBehaviour
             {
             m_Animator.SetTrigger("Fire");
             m_shootingSound.Play();
+            StartCoroutine("muzzleFlash");
             magazine = magazine - 1;
             //shoots a ray
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
@@ -164,9 +168,10 @@ public class Character_Controller : MonoBehaviour
                     
                     if (target != null)
                     {
+
                         //raycast target takes damage
                         target.TakeDamage(damage);
-
+                        
                         //set trigger 'hit' at child of zombie.
                         GameObject armature = target.transform.GetChild(0).gameObject;
 
@@ -182,6 +187,14 @@ public class Character_Controller : MonoBehaviour
             }
 
         }
+    IEnumerator muzzleFlash()
+    {
+        muzzleFlashes[activeWeapon].SetActive(true);
+        yield return new WaitForSeconds(0.01f);
+        muzzleFlashes[activeWeapon].SetActive(false);
+        muzzleFlashes[activeWeapon].transform.Rotate(34, 0, 0, Space.Self);
+    }           
+        
 
         
     }
