@@ -7869,13 +7869,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6226454539066184762, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 4258006900576789442, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258006900576789442, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226454539037202147, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6226454539066184762, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226454539066184762, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6226454539877611296, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
       propertyPath: m_Name
@@ -7883,7 +7895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6226454539877611296, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6226454539877611300, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
       propertyPath: player
@@ -7936,6 +7948,10 @@ PrefabInstance:
     - target: {fileID: 6226454539877611307, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226454541159760789, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
+      propertyPath: m_TagString
+      value: Head
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 102caf578f3b7d14a83d20a2c9e6d254, type: 3}
@@ -10483,7 +10499,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429187440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d94fc0f62f687429df899f8f4aeb51, type: 3}
   m_Name: 
@@ -10901,7 +10917,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1794661915}
     - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
+      propertyPath: stockpileDisplay
+      value: 
+      objectReference: {fileID: 1699126855}
+    - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
+      propertyPath: damage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
       propertyPath: weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
+      propertyPath: magazines.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
@@ -10933,6 +10961,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 95fedcd0ce0e07446838b6934a026428, type: 3}
     - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
+      propertyPath: magazineEmpty.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
       propertyPath: muzzleFlashes.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -10948,6 +10980,10 @@ PrefabInstance:
       propertyPath: muzzleFlashes.Array.data[2]
       value: 
       objectReference: {fileID: 1562705032}
+    - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
+      propertyPath: magazineCapacities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2625728800389639569, guid: eca42c5e0b7a6d54cb48b54f5cc9b481, type: 3}
       propertyPath: animationControllers.Array.size
       value: 3

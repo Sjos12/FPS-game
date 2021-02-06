@@ -27,20 +27,16 @@ using UnityStandardAssets.Characters.ThirdPerson;
         //regulates health and damage taken
         public void TakeDamage(int amount)
         {
-            
+            GameObject armature = gameObject.transform.GetChild(0).gameObject;
+            Animator target_animator = armature.GetComponent<Animator>();
             health -= amount;
-            
+            target_animator.SetTrigger("Hit");
             GetComponent<Healthbar>().SetHealth(health);
             if (health <= 0f && dead == false)
             {
-                //Destroy(gameObject);
-                GameObject armature = gameObject.transform.GetChild(0).gameObject;
                 //destroys hitbox inmediately after death. 
                 GetComponent<CapsuleCollider>().enabled = false;
-                Animator target_animator = armature.GetComponent<Animator>();
-
                 target_animator.SetBool("isDead", true);
-
                 GameObject zombieSpawner = GameObject.Find("Environment");
                 zombieSpawner.GetComponent<SpawnZombie>().zombieAmount -= 1;
                 dead = true;

@@ -16,6 +16,7 @@ public class Character_Controller : MonoBehaviour
         public int[] magazines;
         public int[] magazineCapacities;
         public bool[] magazineEmpty;
+        public int[] damage;
         public int stockpile = 200;
         public AudioClip[] audioClips;
         public TextMeshProUGUI ammoDisplay;
@@ -26,7 +27,6 @@ public class Character_Controller : MonoBehaviour
         int activeWeapon;
         public float targetTime = 60.0f;
         //variables for raycast
-        public int damage = 10;
         public float range = 100f;
         
         
@@ -40,14 +40,17 @@ public class Character_Controller : MonoBehaviour
             magazines[0] = 30;
             magazineCapacities[0] = magazines[0];
             magazineEmpty[0] = false;
+        damage[0] = 34;
             //wepaonslot for glock
             magazines[1] = 17;
             magazineCapacities[1] = magazines[1];
             magazineEmpty[1] = false;
+            damage[1] = 25;
             //weaponslot for m1911
             magazines[2] = 7;
             magazineCapacities[2] = magazines[2];
             magazineEmpty[2] = false;
+            damage[2] = 30;
         }
         
 
@@ -57,18 +60,18 @@ public class Character_Controller : MonoBehaviour
         if (Input.GetKeyDown("1"))
             {
                 //m_Animator.SetTrigger("SwitchGun");
-                weaponSwitch(0, fullAuto = true, damage = 20, range = 200f, fireRate = 8f); 
+                weaponSwitch(0, fullAuto = true,  range = 200f, fireRate = 8f); 
             }
             if (Input.GetKeyDown("2"))
             {
                 //.SetTrigger("SwitchGun");
-                weaponSwitch(1, fullAuto = false, damage = 25, range = 200f, fireRate);
+                weaponSwitch(1, fullAuto = false,  range = 200f, fireRate);
             }
 
             if (Input.GetKeyDown("3"))
             {
                 //.SetTrigger("SwitchGun");
-                weaponSwitch(2, fullAuto = false, damage = 20, range = 200f, fireRate);
+                weaponSwitch(2, fullAuto = false,  range = 200f, fireRate);
             }
         if ((Input.GetKey("w")) || (Input.GetKey("s")))
             {
@@ -138,7 +141,7 @@ public class Character_Controller : MonoBehaviour
             }
         }
         
-        public void weaponSwitch(int weaponSlot, bool fullAuto, int damage, float range, float fireRate)
+        public void weaponSwitch(int weaponSlot, bool fullAuto,  float range, float fireRate)
         {
             //disables all weapons. 
             for (int i = 0; i < weapons.Length; i++)
@@ -176,20 +179,16 @@ public class Character_Controller : MonoBehaviour
                 //shoots a ray
                 if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
                     {
+                        HitDetect hitdetect = hit.transform.GetComponent<HitDetect>();
+                        if (hit.transform.gameObject.tag == "Head") {
+                            hitdetect.sendDamage(damage[activeWeapon] + 60);
+                        }
                         Target target = hit.transform.GetComponent<Target>();
                     
                         if (target != null)
                         {
-
                             //raycast target takes damage
-                            target.TakeDamage(damage);
-                        
-                            //set trigger 'hit' at child of zombie.
-                            GameObject armature = target.transform.GetChild(0).gameObject;
-
-                            target_animator = armature.GetComponent<Animator>();
-
-                            target_animator.SetTrigger("Hit");
+                            //target.TakeDamage(damage[activeWeapon] + 20);
                         }
                         else
                         {
