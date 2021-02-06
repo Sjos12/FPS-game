@@ -9,15 +9,17 @@ public class Character_Controller : MonoBehaviour
         Animator m_Animator;
         Animator target_animator;
         AudioSource m_shootingSound;
+        public Camera fpsCam;
         public RuntimeAnimatorController[] animationControllers;
         public GameObject[] weapons;
         public GameObject[] muzzleFlashes;
+        public int[] magazines;
+        public int[] magazineCapacities;
+        public bool[] magazineEmpty;
+        public int stockpile = 200;
         public AudioClip[] audioClips;
-        //variables for magazine logic
-        public int magazine = 7;
-        public int magazineCapacity = 7;
         public TextMeshProUGUI ammoDisplay;
-        public bool magazineEmpty = false;
+        public TextMeshProUGUI stockpileDisplay;
         public bool fullAuto = false;
         float fireRate = 2f;
         float fireTime = 0;
@@ -27,13 +29,25 @@ public class Character_Controller : MonoBehaviour
         public int damage = 10;
         public float range = 100f;
         
-        public Camera fpsCam;
+        
 
         // Start is called before the first frame update
         void Start()
         {
             m_Animator = gameObject.GetComponent<Animator>();
             m_shootingSound = GetComponent<AudioSource>();
+            //weaponslot for ak47
+            magazines[0] = 30;
+            magazineCapacities[0] = magazines[0];
+            magazineEmpty[0] = false;
+            //wepaonslot for glock
+            magazines[1] = 17;
+            magazineCapacities[1] = magazines[1];
+            magazineEmpty[1] = false;
+            //weaponslot for m1911
+            magazines[2] = 7;
+            magazineCapacities[2] = magazines[2];
+            magazineEmpty[2] = false;
         }
         
 
@@ -43,18 +57,18 @@ public class Character_Controller : MonoBehaviour
         if (Input.GetKeyDown("1"))
             {
                 //m_Animator.SetTrigger("SwitchGun");
-                weaponSwitch(0, fullAuto = true, damage = 20, range = 200f, fireRate = 8f, magazineCapacity = 30); 
+                weaponSwitch(0, fullAuto = true, damage = 20, range = 200f, fireRate = 8f); 
             }
             if (Input.GetKeyDown("2"))
             {
                 //.SetTrigger("SwitchGun");
-                weaponSwitch(1, fullAuto = false, damage = 25, range = 200f, fireRate, magazineCapacity = 17);
+                weaponSwitch(1, fullAuto = false, damage = 25, range = 200f, fireRate);
             }
 
             if (Input.GetKeyDown("3"))
             {
                 //.SetTrigger("SwitchGun");
-                weaponSwitch(2, fullAuto = false, damage = 20, range = 200f, fireRate, magazineCapacity = 7);
+                weaponSwitch(2, fullAuto = false, damage = 20, range = 200f, fireRate);
             }
         if ((Input.GetKey("w")) || (Input.GetKey("s")))
             {
@@ -75,14 +89,15 @@ public class Character_Controller : MonoBehaviour
                 m_Animator.SetBool("isAiming", false);
             }
 
-            ammoDisplay.text = magazine.ToString();
+            ammoDisplay.text = magazines[activeWeapon].ToString();
+            stockpileDisplay.text = stockpile.ToString();
             if (Input.GetButton("Fire1"))
             {
-                if (magazine <= 0)
+                if (magazines[activeWeapon] <= 0)
                 {
-                    magazineEmpty = true;
+                    magazineEmpty[activeWeapon] = true;
                 }
-                if (fullAuto == true && (magazineEmpty == false))
+                if (fullAuto == true && (magazineEmpty[activeWeapon] == false))
                     {
                         if (Time.time - fireTime > 1 / fireRate)
                         {
@@ -94,7 +109,7 @@ public class Character_Controller : MonoBehaviour
             }
             if (Input.GetButtonDown("Fire1"))
             {
-                if (magazineEmpty == true)
+                if (magazineEmpty[activeWeapon] == true)
                 {
                     Debug.Log("Empty mag");
                 }
@@ -102,7 +117,7 @@ public class Character_Controller : MonoBehaviour
                 else
                 {
                     
-                    if (magazineEmpty == false)
+                    if (magazineEmpty[activeWeapon] == false)
                     {
                         if (fullAuto == false)
                         {
@@ -110,15 +125,10 @@ public class Character_Controller : MonoBehaviour
 
                         }
                     }
-                    
-
-                    if (magazine == 0)
+                    if (magazines[activeWeapon] == 0)
                     {
-                        magazineEmpty = true;
+                    magazineEmpty[activeWeapon] = true;
                     }
-
-                    
-                    //Debug.Log("Fire Animation");
                 }
             }
 
@@ -128,7 +138,7 @@ public class Character_Controller : MonoBehaviour
             }
         }
         
-        public void weaponSwitch(int weaponSlot, bool fullAuto, int damage, float range, float fireRate, int magazineCapacity)
+        public void weaponSwitch(int weaponSlot, bool fullAuto, int damage, float range, float fireRate)
         {
             //disables all weapons. 
             for (int i = 0; i < weapons.Length; i++)
@@ -143,10 +153,12 @@ public class Character_Controller : MonoBehaviour
             m_shootingSound.clip = audioClips[weaponSlot];
         }
         
+        //Gets called after the reload animation
         public void fillMagazine ()
         {
-            magazine = magazineCapacity;
-            magazineEmpty = false;
+            stockpile = stockpile - magazineCapacities[activeWeapon] + magazines[activeWeapon];
+            magazines[activeWeapon] = magazineCapacities[activeWeapon];
+            magazineEmpty[activeWeapon] = false;
         }
 
             
@@ -155,35 +167,35 @@ public class Character_Controller : MonoBehaviour
             RaycastHit hit;
 
             //makes sure player can't shoot with empty mag
-            if (magazineEmpty == false)
+            if (magazineEmpty[activeWeapon] == false)
             {
-            m_Animator.SetTrigger("Fire");
-            m_shootingSound.Play();
-            StartCoroutine("muzzleFlash");
-            magazine = magazine - 1;
-            //shoots a ray
-            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
-                {
-                    Target target = hit.transform.GetComponent<Target>();
+                m_Animator.SetTrigger("Fire");
+                m_shootingSound.Play();
+                StartCoroutine("muzzleFlash");
+                magazines[activeWeapon] = magazines[activeWeapon] - 1;
+                //shoots a ray
+                if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+                    {
+                        Target target = hit.transform.GetComponent<Target>();
                     
-                    if (target != null)
-                    {
+                        if (target != null)
+                        {
 
-                        //raycast target takes damage
-                        target.TakeDamage(damage);
+                            //raycast target takes damage
+                            target.TakeDamage(damage);
                         
-                        //set trigger 'hit' at child of zombie.
-                        GameObject armature = target.transform.GetChild(0).gameObject;
+                            //set trigger 'hit' at child of zombie.
+                            GameObject armature = target.transform.GetChild(0).gameObject;
 
-                        target_animator = armature.GetComponent<Animator>();
+                            target_animator = armature.GetComponent<Animator>();
 
-                        target_animator.SetTrigger("Hit");
+                            target_animator.SetTrigger("Hit");
+                        }
+                        else
+                        {
+                            Debug.Log(hit);
+                        }
                     }
-                    else
-                    {
-                        Debug.Log(hit);
-                    }
-                }
             }
 
         }
