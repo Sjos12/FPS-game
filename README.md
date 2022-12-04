@@ -1,4 +1,4 @@
-# FPS-game
+# Overrun Game
 A simple FPS shooter where there is one player who has to shoot bots on a small map. The waves keep increasing until the player dies. Similar to cod zombies. 
 
 Make own low poly character with blender. 
